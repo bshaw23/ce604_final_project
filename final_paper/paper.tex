@@ -1,0 +1,150 @@
+%%%%%%%%%%%%%%%%%%%%%  paper.tex  %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%%%%%%%%%%%%%%% PLEASE NOTE THE FOLLOWING STYLE RESTRICTIONS %%%%%%%%%%%%%%%
+
+%%  1. There are no new tags.  Existing LaTeX tags have been formatted to match
+%%     the Preprint series style.
+%%
+%%  2. Do not change the margins or page size!  Do not change from the default
+%%     text font!
+%%
+%%  3. You must use \cite in the text to mark your reference citations and
+%%     \bibitem in the listing of references at the end of your chapter. See
+%%     the examples in the following file. If you are using BibTeX, please
+%%     supply the bst file with the manuscript file.
+%%
+%%  4. This macro is set up for two levels of headings (\section and
+%%     \subsection). The macro will automatically number the headings for you.
+%%
+%%  5. No running heads are to be used for this volume.
+%%
+%%  6. Theorems, Lemmas, Definitions, Equations, etc. are to be double numbered,
+%%     indicating the section and the occurrence of that element
+%%     within that section. (For example, the first theorem in the second
+%%     section would be numbered 2.1. The macro will
+%%     automatically do the numbering for you.
+%%
+%%  7. Figures and Tables must be single-numbered.
+%%     Use existing LaTeX tags for these elements.
+%%     Numbering will be done automatically.
+%%
+%%  8. Page numbering is no longer included in this macro.
+%%     Pagination will be set by the program committee.
+%%
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%% IMR 2024 SUBMISSION INSTRUCTIONS %%%%%%%%%%%%%%%%%%%%%%%
+%%  1. Full papers are limited to 12 pages in length (US letter size),
+%%     excluding references, and including figures, tables, and appendices. The
+%%     paper must be submitted in PDF format.
+%%  2. Do not include author names or affiliations in the initial submission.
+%%     The review process is double-blind so avoid using terminology that might
+%%     reveal your identity.
+%%  3. Authors are welcome to submit supplementary material (e.g., code,
+%%     datasets, animations, etc.) to the actual paper or research note.
+%%     The paper or note must be complete even without the supplementary
+%%     material. Note that the supplementary material must
+%%     maintain the anonymity of the submission.
+%%  4. OpenConf only keeps the last uploaded file so if you have supplementary
+%%     material, zip it with the paper and upload that.
+%%
+%%     Please review https://www.internationalmeshingroundtable.com/imr32/call-for-papers/
+%%     carefully to make sure your submission meets all the requirements.
+
+
+\documentclass[twoside,leqno,onecolumn]{article}
+
+\usepackage[letterpaper]{geometry}
+
+\usepackage{ltexpprt}
+\usepackage{hyperref}
+\usepackage{subfig}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+ 
+ 
+ 
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{marginnote}
+
+ 
+% https://www.siam.org/Portals/0/Macros/Online/docsiamonline.pdf
+% SIAM journals currently encourage the use of \cref{myfig} and \cref{mysection} instead of e.g. Fig.~\ref{myfig}, \S 1.2 (for section 1.2)
+% use \Cref{myref} to capitalize the first letter at the start of sentences
+% Note: direct \ref references and other examples of poor style have been modified by Scott A. Mitchell for the IMR Template
+\usepackage{cleveref}
+
+\input{new_commands}
+
+% C++
+% two options
+\newcommand{\CC}{C\nolinebreak\hspace{-.05em}\raisebox{.4ex}{\tiny\bf +}\nolinebreak\hspace{-.10em}\raisebox{.4ex}{\tiny\bf +}}
+% \def\CC{{C\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\tiny\bf ++}}}
+% then \CC puts a nicely formatted C++ in the document
+
+% research notes are non anonymized, so we don't need to use the anon command
+\newcommand\anon[2]{{#2}} %known
+
+\begin{document}
+
+%
+%\newcommand\relatedversion{}
+%\renewcommand\relatedversion{\thanks{The full version of the paper can be accessed at {\protect\url{redacted-url}}{\protect\url{https://arxiv.org/abs/1902.09310}}}} % Replace URL with link to full paper or comment out this line
+
+\title{\Large {CE 604 Final Project}}
+    \author{
+   Brian Shawcroft
+    }    
+
+\date{}
+
+\maketitle
+
+% Default Copyright Statement
+%\fancyfoot[R]{\scriptsize{Copyright \textcopyright\ 2024 by SIAM\\
+%Unauthorized reproduction of this article is prohibited}}
+\fancyfoot[C]{\thepage}
+
+% Depending on which copyright you agree to when you sign the copyright form, the copyright
+% can be changed to one of the following after commenting out the default copyright statement
+% above.
+
+%\fancyfoot[R]{\scriptsize{Copyright \textcopyright\ 20XX\\
+%Copyright for this paper is retained by authors}}
+
+%\fancyfoot[R]{\scriptsize{Copyright \textcopyright\ 20XX\\
+%Copyright retained by principal author's organization}}
+
+\input{sections/introduction}
+\input{sections/assumptions}
+\input{sections/continuum_mechanics}
+
+%\input{sections/abstract}
+%
+%% Introduction Section
+%\input{sections/introduction}
+%
+%\input{sections/background_material}
+%
+%\input{sections/methodology}
+%
+%\input{sections/results}
+%
+%\input{sections/conclusion}
+
+% references don't count against the 4 page limit
+\newpage 
+
+%\section*{Acknowledgements}
+%\input{sections/ack.tex}
+%\input{sections/sandia-disclaimer.tex}
+\newpage
+
+% if using BibTex
+%\bibliographystyle{siam}
+%\bibliography{references}
+
+\end{document}
