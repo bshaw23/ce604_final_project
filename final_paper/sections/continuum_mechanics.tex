@@ -1,2 +1,126 @@
-\section{Clasical Linear Elastic Theory}
+\section{Linear Elasticity}
 \label{sec:continuum_mechanics}
+
+Now that the beam and it's behavior are defined by the above assumptions, it is time to introduce linear elasticity.
+%\Cref{eq:linear_momentum,eq:hookes_law,eq:strain,eq:displacements,eq:forces} are the equations used to describe linear elasticity.
+
+Recall that \cref{eq:linear_momentum} represents the balance of linear momentum. 
+
+\begin{equation}
+\sigma_{ij,j} 
++
+f_i 
+= 
+\rho 
+u_{,tt}
+\label{eq:linear_momentum}
+\end{equation}
+
+For static cases, it is accurate to assume that $u_{,tt} = 0$.
+This assumption allows for the simplification to \cref{eq:linear_momentum_zero}
+
+\begin{equation}
+\sigma_{ij,j}+f_i = 0
+\label{eq:linear_momentum_zero}
+\end{equation}
+
+\Cref{eq:hookes_law} is commonly known as hooke's law.
+It relates stress and strain using the fourth order tensor $C_{ijkl}$.
+
+\begin{equation}
+\sigma_{ij} = C_{ijkl}\epsilon_{kk}
+\label{eq:hookes_law}
+\end{equation}
+
+As mentioned ealier, in this work we make the assumption that the beam consists of a homogenous and isotropic material.
+Therefore, Hooke's law takes the special form of \cref{eq:special_hookes}.
+%, where $\lambda$ and $\mu$ are Lame\'e constants describing material properties.
+
+The infinitesimal strain tensor is described in \cref{eq:infinitesimal_strain}.
+
+\begin{equation}
+\epsilon_{ij}=\frac{1}{2}(u_{i,j}+u_{j,i})
+\label{eq:infinitesimal_strain}
+\end{equation}
+
+This is often written as \cref{eq:strain} for simplifyed notation.
+
+\begin{equation}
+\epsilon_{ij}=u_{(i,j)}
+\label{eq:strain}
+\end{equation}
+
+When performing a linear elastic analysis, the quantities of interest are typically forces and displacemnts.
+To solve for the unkonw forces and displacements, we begin with those that are known. 
+\Cref{eq:displacements} describe the known displacements, typically  at the boundary conditions.
+\Cref{eq:forces} are the known forces acting on the beam.
+
+\begin{equation}
+u_i=g_i \ on \ \Gamma_g
+\label{eq:displacements}
+\end{equation}
+
+\begin{equation}
+\sigma_{ij}n_j=h_i \ on \ \Gamma_h
+\label{eq:forces}
+\end{equation}
+
+With the theory of linear elasticity defined, it is now possible to address the calculation of $\epsilon_{\alpha\beta}$.
+By the assumptions of \cref{subsec:displacements}, we find that $\epsilon_{\alpha\beta} = 0$.
+This is shown by recalling th displacement vector $u_i$ and \cref{eq:strain}.
+Solving for $u_{\alpha,\beta}$ yeilds \cref{eq:grad_u}.
+
+\begin{equation}
+u_{\alpha, \beta} =
+\begin{bmatrix}
+ 0 \ -\theta_3(x_3)\\
+ \theta_3(x_3) \ 0
+\end{bmatrix}
+\label{eq:grad_u}
+\end{equation}
+
+Expanding $\epsilon_{\alpha\beta}$ yeilds \cref{eq:eps_alpha_beta_zero}.
+
+\begin{align}
+\label{eq:eps_alpha_beta_zero}
+\epsilon_{\alpha\beta} &=\frac{1}{2}(u_{1,2}+u_{2,1}) \\
+&=\frac{1}{2}(-\theta_3(x_3)+\theta_3(x_3)) \nonumber \\
+&=0 \nonumber
+\end{align}
+
+Thus we verify that according to our assumptions of \cref{subsec:displacements} $\epsilon_{\alpha\beta} = 0$.
+However, we will use \cref{eq:eps_alpha_beta} to calculate the strain for $\alpha$ and $\beta$ directions.
+
+\begin{equation}
+\epsilon_{\alpha \beta} = -\frac{\lambda\epsilon_{33}}{2(\lambda + \mu)}\delta_{\alpha\beta}
+\label{eq:eps_alpha_beta}
+\end{equation}
+
+This equation is derived from the assumptions in \cref{subsec:stress_tensor}, which can be used to redifine $\sigma_{\alpha \beta}$ as \cref{eq:special_sigma_alpha_beta}.
+This in turn expands to \cref{eq:expanded_hookes}.
+
+\begin{equation}
+0 =\sigma_{\alpha\beta} =\lambda\delta_{\alpha\beta}\epsilon_{kk}+2\mu\epsilon_{\alpha\beta}
+\label{eq:special_sigma_alpha_beta}
+\end{equation}
+
+\begin{align}
+\label{eq:expanded_hookes}
+0 = \sigma_{\alpha\alpha} = \lambda(\epsilon_{11}+\epsilon_{22}+\epsilon_{33})\delta_{11}+2\mu\epsilon_{11}\\
++ \lambda(\epsilon_{11}+\epsilon_{22}+\epsilon_{33})\delta_{22}+2\mu\epsilon_{22} \nonumber
+\end{align}
+
+Finally, simplifying we obtain \cref{eq:eps_alpha_alpha}.
+
+\begin{align}
+0 &=\lambda(2\epsilon_{\alpha\alpha} + 2\epsilon_{33})+2\mu\epsilon_{\alpha\alpha} \nonumber \\
+\epsilon_{\alpha\alpha} &= -\frac{\lambda}{\lambda+\mu}\epsilon_{33}
+\label{eq:eps_alpha_alpha}
+\end{align}
+
+From here, \cref{eq:eps_alpha_beta} can be found by substituting the previous equation into \cref{eq:special_sigma_alpha_beta}. 
+
+It has been shown that the assumptions of \cref{subsec:stress_tensor,subsec:displacements} are inconsistent with repsect to strain, in particular $\epsilon_{\alpha\beta}$.
+Typically, \cref{eq:eps_alpha_beta} is prefered for strain calculations.
+Also, this inconsistenty does not void the analysis method.
+%Rather, it is rationalized by it's usefulness~\cref{hughes-fem}.

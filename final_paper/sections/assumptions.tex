@@ -1,11 +1,12 @@
 \section{Assumptions}
+\label{sec:assumptions}
 \input{figs/beam_definition}
-I will begin by outlining the assumptions made.
+%I will begin by outlining the assumptions made.
 
-\paragraph{Approximating the Beam}
- We will first define a beam as our domain of interest.
+\subsection{Approximating the Beam}
+First a beam is defined as the domain of interest.
 The beam is displayed in \cref{fig:beam_definition}.
-The domain of our beam is to first be divided into multiple sections, as shown in \cref{eq:subdivision} and \cref{fig:subdivision}, where 
+The domain of the beam is to first be divided into multiple sections, as shown in \cref{eq:subdivision} and \cref{fig:subdivision}, where 
 $\Omega$ is the beam,
 $\Omega^e$  is the $e$th element of the beam, and
 $\overset{n}{\underset{e=1}{\cup}}$ is the union from element 1 to n.
@@ -14,7 +15,6 @@ $\overset{n}{\underset{e=1}{\cup}}$ is the union from element 1 to n.
  \Omega = \overset{n}{\underset{e=1}{\cup}} \Omega^e
  \label{eq:subdivision}
  \end{equation}
-
 
 Thus \cref{eq:subdivision} states that the domain of interest is to be composed of beam elements numbered from 1 to n.
 Furthermore, each element has local axes defined with respect to the principal axes as shown in \cref{eq:axis_definition,fig:axis_definition}, where $h^e$ is the length of each element and $A^e$ is the cross sectional area of each element.
@@ -46,15 +46,17 @@ In other texts, this is represented by~\cref{eq:zero_area}.
 \label{eq:zero_area}
 \end{equation}
 
-\paragraph{Stress Tensor}
-The second assummption is that $\sigma_{\alpha\beta}=0$ for $\alpha,\beta \in \{1,2\}$.
+
+
+
+\subsection{Stress Tensor}
+\label{subsec:stress_tensor}
+The second assummption is that $\sigma_{\alpha\beta}=0$.
 The stress tensor $\sigma$ is shown in \cref{eq:stress_tensor} and the stress element in \cref{fig:stress_element}.
-By this assumption, the beam will not have normal stresses in the $x_1$ or $x_2$ directions, similar to an axial rod.
-The difference between the beam and an axial rod is that it can experience shear in the $\sigma_{13}$ and $\sigma_{23}$ directions).
-We know the beam will have loads applied in the $x_1$ or $x_2$ directions, which typically would mean a normal stress in those directions.
-However, given our assumptions the beam will still be able to support these loads by the shear.
-This assumption is made for consistency to ensure $\epsilon_{\alpha\beta} = 0$, since we are also neglecting the cross-sectional area of the beam as was shown in \cref{eq:zero_area}.
-In \cref{sec:continuum_mechanics} it will be explained how we can still calculate $\epsilon_{\alpha\beta}$.
+%By this assumption, the beam will not have normal stresses in the $x_1$ or $x_2$ directions, similar to an axial rod.
+%The difference between the beam and an axial rod is that it can experience shear in the $\sigma_{13}$ and $\sigma_{23}$ directions.
+%We know the beam will have loads applied in the $x_1$ or $x_2$ directions, which typically would mean a normal stress in those directions.
+%However, given our assumptions the beam will still be able to support these loads by the shear and axial force.
 
 \begin{equation}
 \sigma = \begin{bmatrix}
@@ -75,7 +77,7 @@ In \cref{sec:continuum_mechanics} it will be explained how we can still calculat
 If we transform $\sigma$ into its principal stress form we get \cref{eq:plane_stress_tensor}.
 This is significant becasue it shows that the beam is in a plane stress condition. 
 A general Mohr's circle for this state of stress is shown in \cref{fig:mohrs_circle}.
-This seems to justify the fact that in mechanics of materials almost all the stress tensors we worked with were simplified to the plane stress condition or similar. 
+This seems to justify the fact that in previous classes almost all the stress tensors we worked with were simplified to the plane stress condition or similar. 
 
 \begin{equation}
 \sigma* = \begin{bmatrix}
@@ -93,8 +95,111 @@ This seems to justify the fact that in mechanics of materials almost all the str
 \caption{The generalized Mohr's circle for the plane stress condition. CHANGE PICTURE: make a Mohr's circle like the one on pg 85 (pg 25 of 61-80) in Continuum Mechanics Text}
 \end{figure}
 
-\paragraph{Displacements}
-The kinematics of the beam will be accounted for using \cref{eq:u1, eq:u2, eq:u3}.
+%{\Rd INCLUDE:
+%This is valid by two approaches.
+%
+%(1) The poisson's ratio of a 1D beam must be equal to zero, because a compressive force in $x_3$ will not change the cross-section in the $x_1$ and $x_2$ directions.
+%
+%(2) The normal forces within the beam will be much smaller than the shear at the boundary. 
+%Thus a local stress element may have normal forces ($\sigma_{11}$ and $\sigma_{22}$), but they will be much smaller than the shear at the boundary or the axial force from the moment.
+%}
+
+This assumption is less intuitive and familiar than the other assumptions made in this section.
+For this reason, two approaches will be put forth to verify it's validity.
+The first approach relies heavily on the one-dimensionality of the approximated beam coupled with the material properties.
+The second apporach considers the details of how forces are supported using of Timoshenko Beam theory. 
+
+
+
+\paragraph{Approach 1}
+To begin, let $\epsilon_{\alpha\beta} = 0$, which is verified by \cref{eq:eps_alpha_beta_zero}.
+Now, \cref{eq:stress_equations} can be derived from \cref{eq:special_hookes}.
+Note that $\sigma_{\alpha\alpha}$ are not neccesarily equal to zero as previously assumed. 
+
+\begin{align}
+\sigma_{11} &= \lambda\epsilon_{33} \nonumber \\
+\sigma_{22} &= \lambda\epsilon_{33} \nonumber \\
+\sigma_{33} &= (\lambda+2\mu)\epsilon_{33} \nonumber \\
+\sigma_{12} &= 0 \nonumber \\
+\sigma_{13} &= 2\mu\epsilon_{13} \nonumber \\
+\sigma_{23} &= 2\mu\epsilon_{23}
+\label{eq:stress_equations}
+\end{align}
+
+Next, consider the equations for $\lambda$ and $\mu$ with respect to modulus of elasticity ($E$) and Poisson's ratio ($\nu$), see \cref{eq:lambda,eq:mu}.
+%Both are dependent on the material properties modulus of elasticity ($E$) and Poisson's ratio ($\nu$).
+%For $\lambda$ to be equal to zero, either $E$ or $\nu$ must be equal to zero.
+%Now consider the physical meaning of setting them to zero.
+%For $E = 0$ the beam would have no stiffness.
+%It would not be able to handle any loads, including selfweight.
+%For $\nu = 0$ the beam would not experience a change in cross-sectional area when loaded axially.
+
+\begin{equation}
+\lambda = \frac{\nu E}{(1+\nu)(1-2\nu)}
+\label{eq:lambda}
+\end{equation}
+
+\begin{equation}
+\mu =  \frac{2E}{2(1+\nu)}
+\label{eq:mu}
+\end{equation}
+
+The physical representation of $\nu$ deals with the compresibility of a material.
+%The stiffness of the material is described by $E$. 
+%A more stiff material will have a higher value of $E$ and vice versa. 
+For a material in axial compression, $\nu$ represents the materials tendency to expand in the transverse direction.
+The values of $\nu$ may range from 0 to 0.5.
+If $\nu = 0$ the material will experience no exapnsion when compressed.
+On the other hand, when $\nu = 0.5$ it will expand to maintain a constant volume. 
+
+Although $\nu$ is a material property, it's siginificance may be influenced by geometry.
+For example, an axial rod of length $l$ and diameter $d$ is composed of an isotropic material with a maximal Poisson's ration $\nu = 0.5$.
+When this rod is tensioned to stretch some $\Delta l$, the diameter will also change by some $\Delta d$ so that the volume $V$ does not change.
+If the rod is slender, then $\Delta d << \Delta l$.
+Therefore, $\Delta d$ may be negligible for a sufficiently slender rod.
+
+The approximated beam is the most extreme case of a slender element because it is one-dimensional.
+The cross-section will not expand or contract under compression or tension. 
+Therefore, $\nu$ must be equal to zero.
+Consequently, $\lambda$ will also be zero.
+If we substitute zero for $\lambda$ in \cref{eq:stress_equations}, we obtain that $\sigma_{\alpha\alpha} = 0$.
+
+%Obviously, making $E$ go to zero would completely nullify the purpose of analyzing the beam.
+%However, for our beam idealized as a 1D element $\nu$ must be equal to zero.
+%A 1D line has no cross-sectional area, therefore there can be no bulging or narrowing of the beam.
+%This assumption is valid because $\sqrt A << h$, so even though our beam will expand or contract slightly it will be negligible compared to the axial deformation. 
+%{\Rd change this to go from the 1D beam to meet at $\nu = 0$ rather than exploring both $E$ and $\nu$ equal to zero}.
+%
+%Therefore, because $\nu = 0$ then $\lambda=0$ also and thus $sigma_{\alpha \beta} = 0$.
+
+
+\paragraph{Approach 2}
+%For the beam under consideration, the stresses will vary linearly throughout the beam. 
+%
+%A beam is controlled by moment or shear.
+%Our beam is defined to support axial force and shear.
+%For the current theory moment is converted to an axial force in the analysis ($F = My/EI$), so it may also take moment.
+%
+%In this case, on a local scale $\sigma_{\alpha\beta} may not be zero. 
+%However, on a global scale $\sigma_{\alpha\beta} << V,M$ so it is safe to approximate $\sigma_{\alpha\beta} = 0$.
+
+The controlling internal forces of a beam are moment and shear.
+By the above assumptions, the beam is capable of supporting shear and axial force.
+By Timoshenko beam theory the moment is transfered into an axial force in the beam ($\sigma_{bending}=\frac{My}{I}$).
+In this manner, the controlling forces are accounted for.
+
+Locally, the beam may experience nonzero $\sigma_{\alpha\beta}$ stresses.
+However, these stresses will be much smaller than the controling shear and moment-induced axial forces.
+This will be to the degree that the transverse normal forces will be negligible. 
+Thus, it is reasonable to make the global approximation that $\sigma_{\alpha\beta}=0$
+
+
+
+
+
+\subsection{Kinematics}
+\label{subsec:displacements}
+The kinematics of the beam will be accounted for using \cref{eq:u1,eq:u2,eq:u3}.
 The translation of the beam is represented by $w_i$, where $i$ is the direction of the translation.
 The rotation of the beam is represented by $\theta_i$.
 As can be observed from the equations, $w_i$ and $\theta_i$ are functions of only $x_3$, the location along the length of the beam.
@@ -168,3 +273,17 @@ The same sort of scenario occurs in \cref{eq:u3}, see \cref{fig:u3_plus_minus_xt
 
 It is important to note that the anlysis will be limited or enhanced by the accuracy of these equations.
 In this case, warping in the beam is not accounted for.
+
+\subsection{Elastic Deformation}
+All deformation in the beam is assumed to be elastic, as opposed to plastic.
+Furthermore, we assume that the beam is homogeneous and isotropic.
+This leads us to the special case for defining the stress tensor as \cref{eq:special_hookes}, where $\lambda$ and $\mu$ are Lame\'e constants describing material properties.
+
+\begin{equation}
+\sigma_{ij}=\lambda\delta_{ij}\epsilon_{kk}+2\mu\epsilon_{ij}
+\label{eq:special_hookes}
+\end{equation}
+
+
+\subsection{Small Displacements}
+As is customary in elastic methods, it is assumed that only small displacements occur.
