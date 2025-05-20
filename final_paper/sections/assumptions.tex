@@ -17,7 +17,7 @@ $\overset{n}{\underset{e=1}{\cup}}$ is the union from element 1 to n.
  \end{equation}
 
 Thus \cref{eq:subdivision} states that the domain of interest is to be composed of beam elements numbered from 1 to n.
-Furthermore, each element has local axes defined with respect to the principal axes as shown in \cref{eq:axis_definition,fig:axis_definition}, where $h^e$ is the length of each element and $A^e$ is the cross sectional area of each element.
+Furthermore, each element has local axes defined with respect to the principal axes as shown in \cref{eq:axis_definition,fig:beam_definition}, where $h^e$ is the length of each element and $A^e$ is the cross sectional area of each element.
 
 \begin{equation}
 \Omega^e = \{
@@ -35,7 +35,7 @@ A^e
 \end{equation}
 
 Furthermore, for the analysis the beam will be considered a one dimensional element. 
-Thus, the beam will be approximated as a line with length $h$ that will act at the centroid of the beam as shown by the center of gravity marker in~\cref{fig:iso_view}.
+Thus, the beam will be approximated as a line with length $h$ that will act at the centroid of the beam as shown by the center of gravity marker in~\cref{fig:beam_definition}.
 In other texts, this is represented by~\cref{eq:zero_area}.
 
 \begin{equation}
@@ -69,8 +69,8 @@ The stress tensor $\sigma$ is shown in \cref{eq:stress_tensor} and the stress el
 
 \begin{figure}%[htb]
 \centering
-\includegraphics[width=0.95\columnwidth,trim=4cm 7cm 6cm 6.5cm, clip]{figs/straight.pdf}
-\caption{The stress element of the beam in its global coordinates. CHANGE PICTURE: make a stress element with coordinate axes shown.}
+\includegraphics[width=0.95\columnwidth,trim=4cm 7cm 6cm 6.5cm, clip]{figs/stress_element.pdf}
+\caption{The stress element of the beam in its global coordinates. }
 \label{fig:stress_element}
 \end{figure}
 
@@ -90,9 +90,9 @@ This seems to justify the fact that in previous classes almost all the stress te
 
 \begin{figure}
 \centering
-\includegraphics[width=0.95\columnwidth,trim=4cm 7cm 6cm 6.5cm, clip]{figs/straight.pdf}
+\includegraphics[width=0.95\columnwidth,trim=4cm 7cm 6cm 6.5cm, clip]{figs/mohrs_circle.pdf}
 \label{fig:mohrs_circle}
-\caption{The generalized Mohr's circle for the plane stress condition. CHANGE PICTURE: make a Mohr's circle like the one on pg 85 (pg 25 of 61-80) in Continuum Mechanics Text}
+\caption{The generalized Mohr's circle for the plane stress condition.}
 \end{figure}
 
 %{\Rd INCLUDE:
@@ -229,45 +229,50 @@ u_3(x_1, x_2, x_3)=w_3(x_3)-x_1\theta_2(x_3)+x_2\theta_1(x_3)
 }
 \\
 \subfloat[$w_1$]{
-	\includegraphics[width=0.2\columnwidth,trim=4cm 7cm 6cm 6.5cm, clip]{figs/straight.pdf}
+	\includegraphics[width=0.2\columnwidth,trim=15cm 7cm 15cm 6.5cm, clip]{figs/w_z.png}
 }
 \subfloat[$w_2$]{
-	\includegraphics[width=0.2\columnwidth,trim=4cm 7cm 6cm 6.5cm, clip]{figs/straight.pdf}
+	\includegraphics[width=0.2\columnwidth,trim=15cm 7cm 15cm 6.5cm, clip]{figs/w_x.png}
 }
 \subfloat[$w_3$]{
-	\includegraphics[width=0.2\columnwidth,trim=4cm 7cm 6cm 6.5cm, clip]{figs/straight.pdf}
+	\includegraphics[width=0.2\columnwidth,trim=15cm 7cm 15cm 6.5cm, clip]{figs/w_y.png}
 }
 \\
 \subfloat[$\theta_1$]{
-	\includegraphics[width=0.2\columnwidth,trim=4cm 7cm 6cm 6.5cm, clip]{figs/straight.pdf}
+	\includegraphics[width=0.2\columnwidth,trim=15cm 7cm 15cm 6.5cm, clip]{figs/theta_z.png}
 }
 \subfloat[$\theta_2$]{
-	\includegraphics[width=0.2\columnwidth,trim=4cm 7cm 6cm 6.5cm, clip]{figs/straight.pdf}
+	\includegraphics[width=0.2\columnwidth,trim=15cm 7cm 15cm 6.5cm, clip]{figs/theta_x.png}
 }
 \subfloat[$\theta_3$]{
-	\includegraphics[width=0.2\columnwidth,trim=4cm 7cm 6cm 6.5cm, clip]{figs/straight.pdf}
+	\includegraphics[width=0.2\columnwidth,trim=15cm 7cm 15cm 6.5cm, clip]{figs/theta_y.png}
 }
 \label{fig:w_theta_displacements}
-\caption{Positive displacements in each coordinate direction for both translation and rotation are shown. CHANGE PICTURES}
+\caption{Displacements in each coordinate direction for both translation and rotation are shown.}
 \end{figure}
 
 Note that in \cref{eq:u1} the $x_2\theta_3(x_3)$ term is subtracted $w_1(x_3)$, while in \cref{eq:u2} $x_1\theta_3(x_3)$ is added to $w_2(x_3)$.
-This is an artifact of the positive/negative convection for rotation.
+This is an artifact of the positive/negative convention for rotation.
 For a point $P$ at some positive valued $(x_1,x_2)$, the $u_1$ displacement is decreased by a $x_3$ rotation.
 Similarly for the same point $P$, the $u_2$ displacement is increased by the $\theta_3$ rotation, see \cref{fig:u1u2_plus_minus_xtheta}.
 The same sort of scenario occurs in \cref{eq:u3}, see \cref{fig:u3_plus_minus_xtheta}
 
 \begin{figure}
 \centering
-\includegraphics[width=0.2\columnwidth,trim=4cm 7cm 6cm 6.5cm, clip]{figs/straight.pdf}
-\caption{A pictoral representation of sign convetion for $\theta_3$ rotations affecting $u_\alpha$ displacements. CHANGE PICTURE}
+\includegraphics[width=0.45\columnwidth,trim=7cm 7cm 12cm 10cm, clip]{figs/theta_3_influence.pdf}
+\caption{A pictoral representation of sign convetion for $\theta_3$ rotations affecting $u_\alpha$ displacements.}
 \label{fig:u1u2_plus_minus_xtheta}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=0.2\columnwidth,trim=4cm 7cm 6cm 6.5cm, clip]{figs/straight.pdf}
-\caption{A pictoral representation of sign convetion for $\theta_\alpha$ rotations affecting $u_3$ displacements. CHANGE PICTURE}
+\subfloat[$\theta_1$]{
+\includegraphics[width=0.45\columnwidth,trim=8cm 7cm 12cm 10cm, clip]{figs/theta_1_influence.pdf}
+}
+\subfloat[$\theta_2$]{
+\includegraphics[width=0.45\columnwidth,trim=8cm 7cm 12cm 10cm, clip]{figs/theta_2_influence.pdf}
+}
+\caption{A pictoral representation of sign convetion for $\theta_\alpha$ rotations affecting $u_3$ displacements.}
 \label{fig:u3_plus_minus_xtheta}
 \end{figure}
 

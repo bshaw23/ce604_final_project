@@ -1,0 +1,30 @@
+\section{Variational Equation}
+The variational equation (a.k.a virtual work) is the next step towards FEM.
+It is shown in~\cref{eq:virtual_work}.
+
+\begin{equation}
+\int_{\Omega} \sigma_{ij,j} \, \hat{u}_i \, d\Omega 
++ \int_{\Omega} f_i \, \hat{u}_i \, d\Omega 
+= 0
+\label{eq:virtual_work}
+\end{equation}
+
+By applying the divergence theorem, boundary conditions, and changes of variables, we arrive at~\cref{eq:fem}.
+
+\begin{equation}
+0 = \sum_{e=1}^{n_{el}} \int_{0}^{l^e} 
+\left(
+\hat{u}_1 \bar{u}_1 \ddot{u}_1 + 
+\hat{u}_2 \bar{u}_2 \ddot{u}_2 + 
+\hat{u}_3 \bar{u}_3 \ddot{u}_3 + 
+\hat{\theta}_x \bar{I}_x \ddot{\theta}_x + 
+\hat{\theta}_y \bar{I}_y \ddot{\theta}_y + 
+\hat{\theta}_z \bar{I}_z \ddot{\theta}_z
+\right) d\xi
+\label{eq:fem}
+\end{equation}
+
+This is the discretized weak form of the virtual work equation, which is used for FEM formulation.
+Essentially, this is the boundary between continuum mechanics and FEM.
+To continue into FEM basis functions are applied, and the equations are implemented in a matrix formulation.
+To continue to derive FEM for a Timoshenko beam refer to~\cite{hughes-fem}.

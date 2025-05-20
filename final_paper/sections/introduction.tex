@@ -1,9 +1,33 @@
 \section{Introduction}
 
-The purpose of this project is to make a clear connection between the fields of continuum mechanics and the finite element method. 
-The material presented herein is based on Hughes chpt 5.4 and Dr. Shepherd's Timoshenko Frame Derivation.
-The motivation for undertaking this project is first and foremost to help myself gain a better understanding of these topics. 
-I also hope that my work here will also help to accelerate other students learning as they try to understand the connection between continuum mechanics and the finite element method. 
+%The purpose of this project is to make a clear connection between the fields of continuum mechanics and the finite element method. 
+%The material presented herein is based on Hughes chpt 5.4 and Dr. Shepherd's Timoshenko Frame Derivation.
+%The motivation for undertaking this project is first and foremost to help myself gain a better understanding of these topics. 
+%I also hope that my work here will also help to accelerate other students learning as they try to understand the connection between continuum mechanics and the finite element method. 
+%
+%{\Rd make this different, more like a real paper}
+%I think it would be helpful to say $\alpha$ and $\beta$ (greek) represent 1 and 2 while $e$ and $i$ (latin) represent 1, 2, and 3.
 
-{\Rd make this different, more like a real paper}
-I think it would be helpful to say $\alpha$ and $\beta$ (greek) represent 1 and 2 while $e$ and $i$ (latin) represent 1, 2, and 3
+Obtaining an understanding of the bridge between theory and application of the Finite Element Method (FEM) can be difficult.
+Even after taking classes in both application and theory, understaning  may still be limited.
+Currently, the gold standard for understanding FEM is~\cite{hughes-fem}.
+Although it is known to be a well written book, the threshold for understanding is high.
+Dr. Kendrick Shepherd has taken steps to make this work more navigable for those early on in their understanding. 
+He has produced a number of documents elaborating on the concepts of~\cite{hughes-fem}.
+Yet, for many the theory behind FEM is vague.
+
+This work has been compiled as a continuing effort to help make the theory behind FEM more accessible and will be applied to a beam.
+Much of what is presented is an elaboration on what is found in chapter 5.4 of ~\cite{hughes-fem}.
+This work also relies heavily on the derivation of the Timoshenko frame analysis~\cite{shepherd-frame}.
+
+A note regarding notation used in this work.
+Subscripts and indexing are important in the formulation of finite element analysis.
+Following the example of ~\cite{hughes-fem}, the subscripts  $\alpha$ and $\beta$ will represent the integers 1 and 2.
+Other latin letters (e.g. $i,j,k,l$) will typically represent the integers 1,2,3, with the expection of $e$ and $n$ being any arbitarity integer.
+
+The work will proceed in the following manner.
+First, the assumptions made in Timoshenko beam theory are explained.
+Particular attention will be placed on justifying these assumptions. 
+Next, the theory of linear elasticity as provided in continuum mechanics is put forth.
+Finally, the variational equation (virtual work equation) will be stated, about which the previous sections provide background.
+A breif explanation of how to proceed toward the FEM will conclude. 
